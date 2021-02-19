@@ -1,7 +1,7 @@
 //Requerimos la clase storage con los métodos get y set donde guardaremos las películas
 const filmDatabase = require("../storage/filmDb");
 //Requerimos la clase Film para traernos las propiedades que tiene film
-const filmModel = require('../models/film');
+const filmModel = require('../models/films');
 
 //Instanciamos la clase filmDatabase y la guardamos en database
 let database = new filmDatabase();
