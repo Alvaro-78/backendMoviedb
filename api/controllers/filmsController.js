@@ -1,5 +1,5 @@
 //Requerimos la clase storage con los métodos get set, donde guardaremos las películas
-const FilmDB = require("../filmdb/filmDB");
+const FilmDB = require("../storedb/filmDB");
 
 class FilmController {
 

@@ -23,4 +23,4 @@ let films_schema = new Schema({
   
 });
 
-module.exports = mongoose.models('films', movies_schema);
+module.exports = mongoose.models('films', films_schema);
