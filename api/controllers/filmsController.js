@@ -1,16 +1,12 @@
-//Requerimos la clase storage con los métodos get y set donde guardaremos las películas
-const filmDatabase = require("../storage/filmDb");
-//Requerimos la clase Film para traernos las propiedades que tiene film
-const filmModel = require('../models/films');
-
-//Instanciamos la clase filmDatabase y la guardamos en database
-let database = new filmDatabase();
+//Requerimos la clase storage con los métodos get set, donde guardaremos las películas
+const FilmDB = require("../filmdb/filmDB");
 
 class FilmController {
 
+  filmDB;
 
   constructor() {
-    this.film = new FilmModel
+    this.film = new FilmDB();
   };
 
   //Métodos CRUD
@@ -18,68 +14,29 @@ class FilmController {
 
   //CREATE Damos de alta una película en la base de datos
 
-  async createFilm( req, res ) {
-
-    let body = req.body;
-
-    try {
-     
-      let saveFilm = await database.set( film );
-            
-      if( saveFilm ){
-          res.send( "Película guardada!!");
-      };
-      
-    }catch ( error ) {
-      console.log( error.message )
-    };
-
+  async createFilm() {
+    return this.film = new FilmDB();
   };
 
   //READ Traernos los datos
 
-  async bringFilms( req,res ) {
-    try {
-        let getting = await database.get();
-
-        if( getting ) {
-            res.send( getting );
-        }
-    }catch (error) {
-        console.log(error);
-    };
-
+  async bringFilms() {
+   return this.film = this.filmDB.get();
   };
 
   //UPDATE Modificar datos
 
-  async updateFilms( req, res ) {
-    try {
-        let update = await database.get();
-
-        if( update ) {
-            res.send( update );
-        }
-      }catch (error) {
-        console.log(error);
-    };
+  async updateFilms( id , film ) {
+    return this.film.updateById( id, film )
   };
 
   //DELETE Borrar datos
 
-  async removeFilms( req, res ) {
-    try {
-        let remove = await database.get();
-
-        if( remove ) {
-            res.send( remove );
-        }
-      }catch (error) {
-        console.log(error);
-    };
+  async removeFilms( id ) {
+   return this.film.deleteById( id )
   };
 
 };
 
 let filmController = new FilmController;
-module.exports = filmController
+module.exports = filmController;
