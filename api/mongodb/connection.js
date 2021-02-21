@@ -1,7 +1,6 @@
 
 const logger = (log) => { console.log(new Date, log) };
 const mongoose = require('mongoose');
-const ObjectId = mongoose.Types.ObjectId;
 
 
 //Uso de las env var o alternativa
@@ -17,7 +16,9 @@ const QUERY_STRING = MONGO_USER ?
   `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DBNAME}` :
   `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DBNAME}`
 
-mongoose.connect(QUERY_STRING, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+const connection = mongoose.connect(QUERY_STRING, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   logger('conexión establecida');
 
-})
+});
+
+module.exports = connection;

@@ -5,22 +5,18 @@ const Schema = mongoose.Schema
 let films_schema = new Schema({
 
   id: {
-    type: ObjectId,
-    required: true
+    type: String,
   },
   name: {
     type: String,
-    required: true
   },
   genre: {
     type: String,
-    required: true
   },
   year: {
     type: Number,
-    required: false
   }
   
 });
 
-module.exports = mongoose.models('films', films_schema);
+module.exports = mongoose.model('films', films_schema);
