@@ -34,9 +34,9 @@ class FilmController {
 
   //UPDATE Modificar datos
 
-  async updateFilms( id  ) {
+  async updateFilms( id, film  ) {
 
-    return films.findByIdAndUpdate( id );
+    return films.findByIdAndUpdate( id, film );
 
   };
 

@@ -6,7 +6,7 @@ router.post( '/create', async( req, res ) => {
 
   try{
 
-    res.json( await filmController.createFilm( new Films( req.body ) ) );
+    res.json( await filmController.createFilm( req.body ) );
 
   } catch ( error ) {
 
@@ -20,7 +20,7 @@ router.get( '/show', async( req, res ) => {
 
   try {
 
-    const showMovies = await filmController.bringFilms();
+    const showMovies = await filmController.bringFilms(  );
     res.json( showMovies )
     
   } catch (error) {
@@ -46,11 +46,12 @@ router.get( '/show-all', async( req, res ) => {
 
 });
 
-router.put( '/:id/update', async( req, res ) => {
+router.put( '/:id', async( req, res ) => {
 
   try {
 
-    const updateMovie = await filmController.updateFilms( _id, body, { new: true} );
+    const id = req.params.id
+    const updateMovie = await filmController.updateFilms( id, req.body );
     res.json( updateMovie )
     
   } catch (error) {
@@ -65,8 +66,7 @@ router.delete( '/:id/delete', async( req, res ) => {
 
   try {
 
-    // const id = req.params.id
-    const deleteMovie = await filmController.removeFilms();
+    const deleteMovie = await filmController.removeFilms( req.body );
     res.json( deleteMovie );
     
   } catch (error) {
