@@ -21,3 +21,13 @@ services:
       - ~/mongo/data:/data/db
     logging:
       driver: none
+  mongoku:
+    image: huggingface/mongoku
+    depends_on:
+        - "mongo"
+    links:
+        - "mongo"
+    ports:
+        - 3100:3100
+    environment:
+        MONGOKU_DEFAULT_HOST: mongo

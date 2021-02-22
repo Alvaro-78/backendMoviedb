@@ -22,21 +22,31 @@ class FilmController {
 
   async bringFilms( film ) {
 
-   return films.find( film );
+    return films.findOne( film );
+ 
+  };
 
+  async bringAllFilms( film ) {
+
+    return films.find( film );
+ 
   };
 
   //UPDATE Modificar datos
 
-  // async updateFilms( id , film ) {
-  //   return this.film.updateById( id, film )
-  // };
+  async updateFilms( id  ) {
+
+    return films.findByIdAndUpdate( id );
+
+  };
 
   // //DELETE Borrar datos
 
-  // async removeFilms( id ) {
-  //  return this.film.deleteById( id )
-  // };
+  async removeFilms( id ) {
+
+   return films.findOneAndDelete( id );
+
+  };
 
 };
 
