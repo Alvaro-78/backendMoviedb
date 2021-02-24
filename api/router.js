@@ -6,8 +6,8 @@ const orderRouter = require( './routers/orderRouter' );
 
 router.use('/films',filmRouter);
 
-// router.use( '/user', userRouter );
+router.use( '/users', userRouter );
 
-// router.use( '/order', orderRouter );
+router.use( '/order', orderRouter );
 
 module.exports = router;

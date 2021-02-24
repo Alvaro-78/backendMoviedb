@@ -1,37 +1,47 @@
 const router = require( 'express' ).Router();
 const filmController = require( '../controllers/filmsController' );
-const Films = require( '../mongodb/schema/films' )
 
-router.post( '/create', async( req, res ) => {
+router.post( '/create-films', async( req, res ) => {
 
   try{
 
-    res.json( await filmController.createFilm( req.body ) );
+    const createMovies = await filmController.createFilm( req.body );
+    res.json( createMovies );
 
   } catch ( error ) {
 
-    console.log( error )  
+    return res.status( 500 ).json({
+
+      message: error.message
+
+    });
 
   };
 
 });
 
-router.get( '/show', async( req, res ) => {
+
+router.post( '/search', async( req, res ) => {
 
   try {
 
-    const showMovies = await filmController.bringFilms(  );
-    res.json( showMovies )
+    const { title } = req.body
+    const showMovies = await filmController.searchByTitle( title );
+    res.json( showMovies );
     
-  } catch (error) {
+  } catch ( error ) {
 
-    console.log( error)
+    return res.status( 500 ).json({
+
+      message: error.message
+      
+    });
 
   };
 
 });
 
-router.get( '/show-all', async( req, res ) => {
+router.get( '/show-all-films', async( req, res ) => {
 
   try{
 
@@ -40,7 +50,11 @@ router.get( '/show-all', async( req, res ) => {
 
   } catch ( error ) {
 
-    console.log( error )  
+    return res.status( 500 ).json({
+
+      message: error.message
+      
+    });  
 
   };
 
@@ -54,9 +68,13 @@ router.put( '/:id', async( req, res ) => {
     const updateMovie = await filmController.updateFilms( id, req.body );
     res.json( updateMovie )
     
-  } catch (error) {
+  } catch  (error ) {
     
-    console.log( error )  
+    return res.status( 500 ).json({
+
+      message: error.message
+      
+    });  
 
   };
 
@@ -69,13 +87,16 @@ router.delete( '/:id/delete', async( req, res ) => {
     const deleteMovie = await filmController.removeFilms( req.body );
     res.json( deleteMovie );
     
-  } catch (error) {
+  } catch ( error ) {
     
-    console.log( error );
+    return res.status( 500 ).json({
+
+      message: error.message
+      
+    });
 
   };
 
 });
 
-
-module.exports = router
+module.exports = router;

@@ -7,7 +7,7 @@ let films_schema = new Schema({
   id: {
     type: String,
   },
-  name: {
+  title: {
     type: String,
   },
   genre: {

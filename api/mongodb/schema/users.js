@@ -5,33 +5,24 @@ const Schema = mongoose.Schema
 let users_schema = new Schema({
 
   id: {
-    type: ObjectId,
-    required: true
+    type: String,
   },
   name: {
     type: String,
-    required: true
   },
   surname: {
     type: String,
-    required: true
   },
   dni: {
     type: Number,
-    required: true
   },
   address: {
     type: String,
-    required: true
   },
   telephonenumber: {
-    type: Number
-  },
-  dateofbirth: {
-    type: Number,
-    required: true
+    type: String
   }
   
 });
 
-module.exports = mongoose.models('users', users_schema);
+module.exports = mongoose.model('users', users_schema);

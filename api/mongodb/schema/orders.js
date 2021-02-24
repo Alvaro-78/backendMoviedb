@@ -4,23 +4,21 @@ const Schema = mongoose.Schema
 
 let orders_schema = new Schema({
 
-  id: {
-    type: ObjectId,
-    required: true
+  film_id: {
+    type: Schema.Types.ObjectId,
+    refs: "films"
   },
   user_id: {
-    type: Date,
-    required: true
+    type: Schema.Types.ObjectId,
+    refs: "users"
   },
   rentaldate: {
     type: Date,
-    default: new Date
   },
   returndate: {
     type: Date,
-    default: new Date
   },
   
 });
 
-module.exports = mongoose.models('orders', orders_schema);
+module.exports = mongoose.model('orders', orders_schema);
