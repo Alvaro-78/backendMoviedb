@@ -14,13 +14,20 @@ let users_schema = new Schema({
     type: String,
   },
   dni: {
-    type: Number,
+    type: String,
   },
   address: {
     type: String,
   },
   telephonenumber: {
     type: String
+  },
+  email: {
+    type: String,
+    unique: true
+  },
+  password: {
+    type: String,
   }
   
 });
