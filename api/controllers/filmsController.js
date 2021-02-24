@@ -1,6 +1,5 @@
 //Requerimos la clase storage con los métodos get set, donde guardaremos las películas
 const films = require( '../mongodb/schema/films' );
-// const FilmDB = require("../storedb/filmDB");
 
 class FilmController {
 

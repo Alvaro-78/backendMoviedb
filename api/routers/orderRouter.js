@@ -1,16 +1,17 @@
 const router = require( 'express' ).Router();
 const orderController = require( '../controllers/ordersController' );
 
-router.post( '/:id/create-order', async( req, res ) => {
+router.post( '/', async( req, res ) => {
 
   try {
     
-    const orderFilm = await orderController.createOrderFilm( req.body );
-    res.json( orderFilm );
-
+    const orderFilm = await orderController.createOrderFilm( req.body.user_id, req.body.film_id );
+    const status = 'success';
+    res.json( { orderFilm, status } );
+    
   } catch ( error ) {
     
-    return res.status( 500 ).json({
+    return res.status( 404 ).json({
 
       message: error.message
       
@@ -25,7 +26,8 @@ router.get( '/show-order', async( req, res ) => {
   try {
     
     const showOrders = await orderController.indexAllOrderByCustomer();
-    res.json( showOrders );
+    const status = 'success';
+    res.json( { showOrders, status } );
 
   } catch ( error ) {
     
@@ -44,7 +46,8 @@ router.get( '/show-all-order', async( req, res ) => {
   try {
     
     const showAllOrders = await orderController.bringAllOrders();
-    res.json( showAllOrders );
+    const status = 'success';
+    res.json( { showAllOrders, status } );
 
   } catch ( error ) {
     
@@ -64,7 +67,8 @@ router.put( '/:id', async( req, res ) => {
     
     const id = req.params.id
     const updateOrders = await orderController.updateOrderByCustomer(  id, req.body );
-    res.json( updateOrders );
+    const status = 'success';
+    res.json( { updateOrders, status } );
 
   } catch ( error ) {
     
@@ -82,7 +86,8 @@ router.delete( '/:id/delete', async( req, res ) => {
   try {
     
     const removeOrders = await orderController.removeOrders( req.body );
-    res.json( removeOrders );
+    const status = 'success';
+    res.json( { removeOrders, status } );
 
   } catch  (error ) {
     

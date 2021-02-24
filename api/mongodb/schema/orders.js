@@ -1,22 +1,23 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = mongoose.Types.ObjectId;
 
 
 let orders_schema = new Schema({
 
-  film_id: {
-    type: Schema.Types.ObjectId,
-    refs: "films"
+  user_id: { 
+    type: ObjectId,
   },
-  user_id: {
-    type: Schema.Types.ObjectId,
-    refs: "users"
+  film_id: { 
+    type: ObjectId,
   },
-  rentaldate: {
+  rental_date: {
     type: Date,
+    default: new Date
   },
-  returndate: {
+  return_date: {
     type: Date,
+    default: new Date(+new Date() + 7*24*60*60*1000)
   },
   
 });

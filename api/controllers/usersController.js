@@ -1,6 +1,4 @@
 const users = require( '../mongodb/schema/users' )
-// const films = require( '../mongodb/schema/films' )
-const orders = require( '../mongodb/schema/orders' )
 
 class UsersController {
 
@@ -15,13 +13,13 @@ class UsersController {
 
     return users.findOne( user );
 
-   };
+  };
 
    async bringAllUsers( user ) {
 
     return users.find( user );
 
-   };
+  };
 
    async updateUsers( id , user ) {
 
@@ -34,16 +32,6 @@ class UsersController {
     return users.findByIdAndRemove( id );
 
    };
-
-  async createOrderFilm( userId, filmId ) {
-  
-    orders.create({
-
-    customerId: userId,
-    filmId: filmId,
-      
-    });
-  };
    
 };
 

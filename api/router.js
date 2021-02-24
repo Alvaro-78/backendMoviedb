@@ -8,6 +8,6 @@ router.use('/films',filmRouter);
 
 router.use( '/users', userRouter );
 
-router.use( '/order', orderRouter );
+router.use( '/orders', orderRouter );
 
 module.exports = router;

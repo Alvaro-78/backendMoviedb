@@ -65,7 +65,8 @@ router.put( '/:id', async( req, res ) => {
     
     const id = req.params.id
     const updateUsers = await UsersController.updateUsers( id, req.body );
-    res.json( updateUsers );
+    const status = 'success';
+    res.json( { updateUsers, status } );
 
   } catch (error) {
     
@@ -85,7 +86,8 @@ router.delete( '/:id', async( req, res ) => {
     
     const id = req.params.id;
     const deleteUsers = await UsersController.removeUsers( id );
-    res.json( deleteUsers );
+    const status = 'success';
+    res.json( { deleteUsers, status } );
 
   } catch (error) {
     
