@@ -1,30 +1,53 @@
-const FilmDB = require("../storedb/filmDB");
-
+const users = require( '../mongodb/schema/users' )
+// const films = require( '../mongodb/schema/films' )
+const orders = require( '../mongodb/schema/orders' )
 
 class UsersController {
 
 
-  constructor() {
-    this.film = new FilmDB();
+  async createUsers( user ) {
+
+    return users.create( user );
+
   };
 
-  async createFilm() {
-    return this.film = new FilmDB();
-  };
+  async bringUsers( user ) {
 
-  async bringFilms() {
-    return this.film = this.filmDB.get();
+    return users.findOne( user );
+
    };
 
-   async updateFilms( id , film ) {
-    return this.film.updateById( id, film )
-  };
+   async bringAllUsers( user ) {
 
-  async removeFilms( id ) {
-    return this.film.deleteById( id )
+    return users.find( user );
+
    };
 
+   async updateUsers( id , user ) {
+
+    return users.findByIdAndUpdate( id, user,  { new: true } );
+
+  };
+
+  async removeUsers( id ) {
+
+    return users.findByIdAndRemove( id );
+
+   };
+
+  async createOrderFilm( userId, filmId ) {
+  
+    orders.create({
+
+    customerId: userId,
+    filmId: filmId,
+      
+    });
+  };
+   
 };
 
-let UsersController = new UsersController;
-module.exports = UsersController;
+
+
+let usersController = new UsersController;
+module.exports = usersController;

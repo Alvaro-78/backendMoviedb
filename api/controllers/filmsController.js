@@ -1,13 +1,10 @@
 //Requerimos la clase storage con los métodos get set, donde guardaremos las películas
-const films = require( '../mongodb/schema/films' )
+const films = require( '../mongodb/schema/films' );
 // const FilmDB = require("../storedb/filmDB");
 
 class FilmController {
 
-  constructor() {
-    
-  };
-
+  
   //Métodos CRUD
 
   //CREATE Damos de alta una película en la base de datos
@@ -20,9 +17,9 @@ class FilmController {
 
   //READ Traernos los datos
 
-  async bringFilms( film ) {
+  async searchByTitle( title ) {
 
-    return films.findOne( film );
+    return films.find( { title } );
  
   };
 
@@ -36,7 +33,7 @@ class FilmController {
 
   async updateFilms( id, film  ) {
 
-    return films.findByIdAndUpdate( id, film );
+    return films.findByIdAndUpdate( id, film, { new: true } );
 
   };
 
@@ -44,7 +41,7 @@ class FilmController {
 
   async removeFilms( id ) {
 
-   return films.findOneAndDelete( id );
+   return films.findByIdAndDelete( id );
 
   };
 
