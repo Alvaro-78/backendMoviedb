@@ -5,9 +5,9 @@ router.post( '/create-films', async( req, res ) => {
 
   try{
 
-    const createMovies = await filmController.createFilm( req.body );
+    const createFilm = await filmController.createFilm( req.body );
     const status = 'success';
-    res.json( { createMovies, status } );
+    res.json( { createFilm, status } );
 
   } catch ( error ) {
 
